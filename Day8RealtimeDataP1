@@ -1,0 +1,67 @@
+###Intro to Realtime Database Part. 1
+
+##Objectives
+
+You will learn to:
+
+initialize Firebase in a project directory.
+use the Firebase API to read data from a Realtime Database.
+interact with the DOM to render data onto your HTML page.
+
+##Starting Code
+Moving forward, since the starter code for each lesson will be a full Firebase application, with a slightly more complex hierarchy and many more individual files, these lessons will no long include code transcribed here. Please refer to the instructor’s directions on how to access the starter code.
+
+##Instructions
+
+Follow these steps to initialize a Firebase project in your secretMessageApp directory.
+In your Firebase console, select the secret-message-app project that your built yesterday.
+Under “Get Started” select web, to get started initializing a web app with Firebase.
+Give the app a nickname. It can be named the same as your Firebase project, or something different. This is just a name to represent the app within the Firebase console.
+Select “Also set up Firebase hosting”.
+Click “Register App”. Step through the rest of the set up, and click “Continue to console”.
+There are multiple ways to initialize Firebase in a project directory. One of the simplest ways to do this is through hosted URLs that we can plug into our application. Load the necessary Firebase libraries by adding this code to the head of your index.html file:
+
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script defer src="/__/firebase/8.3.1/firebase-app.js"></script>
+<!-- include only the Firebase features as you need -->
+<script defer src="/__/firebase/8.3.1/firebase-database.js"></script>
+<script defer src="/__/firebase/init.js?useEmulator=true"></script>
+In Cloud Shell, cd into the secretMessageApp project directory. In the terminal, type firebase login. If prompted, you should login with the Google account that you’ve used to create your Firebase project.
+
+Next we’ll want to install the Firebase Command Line Interface (CLI) to set up and use Firebase in our project repo. Run npm install -g firebase-tools. This command will use the Node Package Manager to install the Firebase CLI and give us access to all the tools we need to manage, view, and deploy our Firebase projects.
+
+Run firebase init and follow the prompts to initialize Firebase in your project.
+
+Which Firebase CLI features do you want to set up for this folder? Database, Hosting, Emulators
+Project Setup: Use an existing project (to-do-list)
+Initialize RTDB
+What file should be used for Realtime Database Security Rules? Default
+What do you want to use as your public directory? Default
+Configure as a single-page app (rewrite all urls to /index.html)? No
+Set up automatic builds and deploys with GitHub? No
+Which Firebase emulators do you want to set up? Hosting
+Use default ports for emulators
+Confirm that everything is working properly by running the command firebase emulators:start --only hosting.
+
+In viewMessages.js, add this code:
+
+const getMessages = () => {
+    const messagesRef = firebase.database().ref();
+        messagesRef.on('value', (snapshot) => {
+        const data = snapshot.val();
+    });
+}
+Add a console.log() to your getMessages() function to confirm that you recieved data.
+
+Use the DOM to capture the value of the input field. Use a for...in loop to iterate over the returned JSON, and search for the message that match the secret passcode.
+
+Add functionality to render the message as HTML in our viewMessages.html file.
+
+
+const renderMessageAsHtml = (message) => {
+    // Hide Input Form
+
+    // Render messageas HTML
+}
+Inject the message into the viewMessages.html page.
