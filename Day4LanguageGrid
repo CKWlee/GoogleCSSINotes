@@ -1,0 +1,32 @@
+###Language Grid Guessing Game
+
+##Objectives
+
+You will learn to:
+
+use the "change" event listener to listen for submissions in a text field.
+use if...else control flow to respond differently to different inputs.
+use the compound “or” (||) operator.
+use the ".classList.remove() method to remove classes from HTML elements.
+
+##Instructions
+
+Solve the errors in .querySelector().
+
+Figure out how to complete the .querySelector() for the input field.
+
+Add a "change" event listener and a console.log(...) to test the return key.
+
+All our tiles start off visible, but we want them hidden until it’s time to display them, so we’ll fix this before finishing the event. Add the "hidden" class to the English tile.
+
+Add console.log(englishTile.classList) and console.log(spanishTile.classList) right after all our querySelectors to show that each element has its the classes stored in a property called classList. Since we’ve added it to the English tile, but not the Spanish one, the ClassList for the English tile is one item longer. We’ll eventually make it reappear by removing "hidden" from this list.
+
+Add a "hidden" class to all the language tiles.
+
+Return to the event listener, and add let guess = inputField.value and console.log(guess). Test this version and demo that the .value property shows what the user has typed into that field.
+
+Add our first conditional statement, as shown here: javascript inputField.addEventListener("change", (e) => { console.log("Guess submitted!"); let guess = inputField.value; console.log(guess); if (guess === "English") { englishTile.classList.remove("hidden"); }
+
+Consider adding inputField.value = "" to the end of this event’s arrow function to auto-clear the field after every guess.
+
+Celebrate!
