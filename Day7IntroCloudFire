@@ -1,0 +1,50 @@
+###Intro to Cloud Shell + Firebase
+
+##Objectives
+
+You will learn to:
+
+Use the ls, cd, pwd, mkdir, and touch commands to create an navigate file structures from the command line.
+Access your Firebase consoles.
+Start a new Firebase project that uses Realtime Database
+Manually add records to the Realtime Database using the console.
+
+##Instructions
+
+##PART 1: Intro to Cloud Shell and Command Line
+Click on this link to head to your Cloud Shell. bit.ly/cloudshell
+
+Practice using pwd. What does it do?
+
+Practice using ls and touch, and alternate between to add a new file, then confirm that it was created. Practice these two commands by touching files for 5-10 songs you like.
+
+Practice using mkdir ro create directories, with something like a genre of music or an artist that you like. Then practice cd and pwd to navigate to that folder and confirm the navigation was successful. Use touch to create a file or two here, and use ls to confirm.
+
+Touch a file or two inside that directory, and then demonstrate cd .. to navigate up one level to the current directory’s parent directory. Repeat this for at least one more directory, talking aloud as you perform each step.
+
+Spend some time with the commands we just learned!
+
+##PART 2: Intro to Firebase and Realtime Database
+Navigate to the Firebase console: https://console.firebase.google.com/.
+
+Click “Add Project” and move through the steps to create a new Firebase project.
+
+Give the project a name. The name secret-messaging-app or something like it, is perfectly appropriate.
+
+Enabling Google analytics is unnecessary. Leave it unselected for now.
+
+Click “Create Project”.
+
+After your app has been created and the Firebase console has reloaded, select the project that you’ve just created.
+
+In the left hand menu, select “Realtime Database”. Then select “Create Database”.
+
+Select the default database location. It should be something like United States (us-central1).
+
+Select “test mode”, then click enable. Test Mode allows anyone who has the database reference to read and write to our database.
+
+To demonstrate the data we will be writing to/reading from our database, here’s an example of the data we would store in our Secret Messaging App database.
+
+A single JSON node that represents our data will look like this. js { 'uniqueKey': { message: STRING, passcode: STRING } }
+
+When using the Firebase API to add new records to realtime database, the API automatically generates a unique key for each unit of data. When we manually add records we need to provide our own key. To create a key you should type a unique key as a name, leave the value field blank, then click the “+” sign to add message, passcode, and any additional fields.
