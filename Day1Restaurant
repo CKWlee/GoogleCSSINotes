@@ -1,0 +1,120 @@
+###Restaurant Page
+
+##Objectives
+#You will learn to:
+
+#properly nest HTML elements to create a Web page.
+#use semantic elements including <section> and <footer>.
+#consult documentation to learn to add new elements to your page.
+#use element-level CSS selectors to modify the appearance of your pages.
+
+##Starting Code
+#Starting HTML
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pete's Pizza</title>
+  <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+#Starting CSS
+
+background-color: aliceblue; font: "IBM Plex Sans", sans-serif; }
+
+section {
+  padding: 20px;
+  margin: 20px;
+  background-color: #d5e1eb;
+}
+
+h1 {
+  text-align: center;
+  font-size: 64px;
+}
+
+h3 {
+  text-align: center;
+  font-style: italic;
+}
+
+div {
+  padding: 20px;
+  margin: 20px;
+  background-color: #607482;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h4 {
+  font-size: 30px;
+}
+
+p {
+  margin-top: 30px;
+}
+
+h5 {
+  font-size: 30px;
+  text-align: right;
+}
+
+img {
+  width: 100%;
+  max-width: 600px;
+  margin: auto;
+}
+
+footer { padding: 30px; padding-top: 20px; margin-bottom: -20px; margin-left:
+-40px; margin-right: -40px; background-color: #7cbdeb; }
+
+
+##Instructions
+
+#Open the index.html file.
+
+Look at the rendered html page in the browser. In Glitch, this is called the “preview”, so it will be referred to as the preview for the rest of these lesson guides.
+
+Add a <section> with nothing in it, and refresh the preview. We’re going to create three main sections - a greeting banner to welcome people to the page, an about section, and a menu.
+
+Since we’re building three sections, it might be helpful to add a label to each one. We’ll use the id attribute, and we’ll add id="greeting" to the opening tag to give an ID of “greeting to this first section.
+
+Inside the greeting section, add an h1 element with your restaurant’s name and refresh the page.
+
+Add an h3 with your restaurant’s tagline or motto in it immediate after the h1. Refresh the page.
+
+Add a second section to your page. We’ll give this one an ID of “about” and refresh the page. Add <h2>About</h2> to that section, and then add your first <p> element with a quick bio of your restaurant. w3schools is a really good place for HTML beginners to go and look things up. For example, the site addresses h2 elements, and p elements.
+
+Add a third section with id="menu" to house our menu, and like our “about” section, it will need a corresponding h2 so that users know it’s a menu.
+
+We’ll want to divide our menu section up a little bit, so we’ll use what’s called a “divider” or just a “div” to each menu item its own little space to live. Add two <div></div>s to our menu, and then point out we now have space for two menu items on our menu. Each one will need four things: a title, a picture, a description, and a price.
+
+Code out the first div as follows: Let’s use an h4 for the name, a p for the description, and a h5 for the price.
+
+Lastly, add the image in an image tag <img src="" />. IMPORTANT: An image can’t really have things “inside” of it like most other elements can, so it’s one of the few elements without a closing tag. Feel free to use the self-closing syntax demonstrated here, especially if you’d like to continue to hold yourself accountable to the rule that “all tags must close”. The three most common reasons an image might not display are: 1. Misspelling src. 2. Leaving off quotes in after the equals sign. 3. Forgetting to close the img tag with a > after the URL.
+
+Go and find a suitable image, and paste the url into the image element.
+
+Add an alt="" property to the img element. Adding alt tags is an important part of making the internet an accessible place. Look into these tips and tricks for creating alt tags that are descriptive and useful. You are encouraged to add an alt to every img in the course moving forward.
+
+Repeat the previous 3 steps for the next menu item if time allows. If time is short, you can leave it blank, or just place the empty elements inside it.
+
+Finally, add a footer, add a p inside it. Use an Anchor Link (or an a tag for short) to create a clickable link to take you to another page.
+
+Try to add something new to the page! This could be as simple as filling out a menu item, or as complex as revamping the entire restaurant to your own tastes. Google color picker can help you find colors to use for your website. The color picker gives us at least five different codes for any color we pick. You can use any of those codes; we’ll use hex since it’s somewhat widely used.
+
+Celebrate! You built a webpage!
+
