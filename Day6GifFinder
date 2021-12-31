@@ -1,1 +1,72 @@
 ###Gif Finder
+
+##Objectives
+
+You will learn to:
+
+make a call to an API Endpoint in the browser.
+use fetch() to make a call to an API Endpoint.
+use .then() and .catch() to handle responses from an API endpoint.
+render content from an API call in your index.html files.
+
+##Instructions
+
+##PRELUDE: What is an API?
+See an example of an API in action.
+
+API stands for Application Program Interface. You’ll likely want to use an API anytime you want to interact with a large base of information that someone else has already created, especially when recreating that information yourself would require prohibitive time and effort.
+
+Requesting information from an API can often cost money - usually tiny amounts that add up over time - but that we’ll be focusing on APIs which can be used for free.
+
+##PART 1: APIs in the Browser
+Learn about requests and responses.
+
+Normally, if we look at a web page like google.com, we’re REQUESTING information from a server. That server sends back some HTML (and usually some CSS and some JavaScript as well) in the form of a RESPONSE. We generally don’t think of that response as being a set of .html, .css, and .js files, we generally just think of that whole collection of code in three different languages as a “webpage.”
+
+Learn JSON as a concept.
+
+We can actually request a whole lot more than just webpages, and we can get lots of other responses back besides just HTML documents. Many services send us back information in a format called JSON, which stands for JavaScript Object Notation. Rather than describe it to you, let’s just play with it.
+
+Go to https://jservice.io/api/random, and model getting a JSON response.
+
+Let’s use this URL to REQUEST a JSON RESPONSE from an API called jService - an API devoted entirely to questions from the TV show Jeopardy.
+
+Learn about endpoints.
+
+If this API call worked, each of you REQUESTED a random Jeopardy question from the /random ENDPOINT, and each you got a random RESPONSE from the jService API.
+
+Add a JSON Viewer.
+
+The JSON probably came back a little bit hard to read since it’s all squished together. You may wish to add a JSON viewer plugin to Chrome. JSONview is a really simple one that works well.
+
+Learn that a 404 is still a response.
+
+Model the /categories endpoint.
+
+The random endpoint is cool, but sometimes the questions that come back are a little outside my area of expertise. I want to find a really good category, so I am going to REQUEST something from the categories endpoint: https://jservice.io/api/categories.
+
+Learn about default behaviors and query parameters.
+
+Learn how to use the /clues endpoint.
+
+Let’s use the /clues endpoint to look for clues from a specific category: https://jservice.io/api/clues?category=105. So we’ve finally done it - we’ve got a huge chunk of questions that could make for a really fun game!
+
+##PART 2: APIs in JavaScript
+Head to developers.giphy.com and sign up for a developer account.
+
+Replace the text "YOUR_API_KEY_HERE" in the starter code with your respective API key.
+
+Add the following lines of code to your event listener arrow function: javascript let myQuery = `https://api.giphy.com/v1/gifs/search?api_key=${myKey}&q=${topic}`; console.log(myQuery);
+
+Click on the link that gets logged to the console and open in a new tab to show that it will indeed get us the info we want (a series of gifs per the topic).
+
+What we want to do is wait for that response to come (or, to put it another way, we want to wait for that promise to resolve), and then take action. Replace the earlier console.log statement with this: javascript fetch(myQuery) .then(response => console.log(response))
+
+Notice that we’ve got a response, but the FULL response isn’t back yet - just the headers with information like the response code (200, and not 404, which is good!), so we need to specifically read the rest of the data as it comes in. Replace the earlier JavaScript with this: javascript fetch(myQuery) .then(response => response.json()) .then(myjson => { console.log(myjson); })
+
+Name two ways our code could be improved.
+
+On the line before we capture our imgurl variable, add let i = getRandom(10); to get a random number between 0-9 - the 10 is arbitrary, but the gifs get stranger the deeper you go into the response, and there are only 50 anways. Then, replace the hard-coded 2 with the variable i. Now we’ll get a random choice from our top 10 gifs in the json response.
+
+Instead of replacing the .innerHTML, we could add to it. The easiest way to do this is by resetting the .innerHTML to whatever it used to be, plus our new image element. If we want our new image element to be in front, we’ll write that code like this: javascript imageHolderDiv.innerHTML = `<img src="${imgurl}"/>` + imageHolderDiv.innerHTML
+
