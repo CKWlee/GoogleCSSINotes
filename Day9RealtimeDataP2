@@ -1,0 +1,26 @@
+###Intro to Realtime Database Part. 2
+
+##Objectives
+
+You will learn to:
+
+Use the DOM to capture user input.
+Use the Firebase API to write data to your realtime database.
+Use the Firebase console as the source of truth for database operations.
+
+##Instructions
+
+Start off by adding a function to writeMessage.js to write logic to send a message to the database. Run firebase emulators:start --only hosting. This will start the emulators so that you can test your project.
+
+const submitMessage = () => {
+
+}
+
+Use console.log() to confirm that our script file is properly linked to our HTML.
+
+Add a click handler to the “Send Message” button. Then test the submitMessage() function again.
+
+Use the DOM again to capture input from our form.
+
+Use the Firebase API to push our data to the realtime database.
+
