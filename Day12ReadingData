@@ -1,0 +1,62 @@
+###Firebase Realtime Database: Reading Data and Rendering HTML
+
+##Objectives
+
+You will learn to:
+
+use the Firebase API to validate a users authentication state.
+read data from your realtime database.
+use for...in loops to iterate over user generated data.
+use the DOM to render data as formatted HTML.
+
+##Instructions
+
+Look at the app once again, but think more intentionally about what features you would need to build in order to allow users to view the notes they created.
+
+Today most of the code will be written in viewNotes.js. Once again, it’s a good idea to check the authentication state of the user before proceeding with the logic to read from a database. Start by adding a window.onload event:
+
+window.onload = event => {
+
+}
+
+See if you can recall the steps to validate a user’s authentication.
+
+After verifying that our user is logged in, it’s a good idea to store their ID, so that we can later query for their data. Yesterday we retrieved the user’s ID from the user object that was returned to us after the user logged in. Today we’ll do the same thing, and store that user ID in a variable: googleUserId. Add this line at the end of the if block:
+
+
+const googleUserId = user.uid;
+
+We need to add the functionality to retrieve the notes from the database. In order to look up a specific users notes, it’s necessary to take in the user’s ID, which can be passed in as a parameter.
+
+const getNotes = (userId) => {
+
+}
+
+Back in our window.onload event, call the getNotes function so that it will trigger after a user has been validated. Pass the user’s ID into the function call so that it can be appended the query url.
+
+Inside the getNotes(userId) function definition, start by connecting to the database and routing to the individual user’s database resource. Instead of passing in the variable userId, we passed in googleUser.uid, but both variables point to the same data: the logged in user’s unique id. Today we’ll be referencing that same endpoint to retrieve our stored data.
+
+const notesRef = firebase.database().ref(`users/${userId}`);
+
+Read from the database and store the data that is returned in a variable:
+
+notesRef.on('value', (snapshot) => {
+  const data = snapshot.val();
+});
+
+To add the functionality to render the data as HTML, start by adding a function renderDataAsHtml() that will loop over the notes, create a card, and render it onto the viewNotes.html HTML page.
+
+const renderDataAsHtml = data => {
+
+};
+
+There are multiple ways to dynamically create HTML using the DOM. The simplest way to do this, for now, is to create a large string of HTML that we can inject into the DOM.
+
+const renderDataAsHtml = data => {
+  let cards = ``;
+
+};
+
+It’s time to add some code that will create an HTML card. It is perfectly valid to do that inside of the renderDataAsHtml() function,but for the sake of readability and seperating concerns, it’s best practice to keep code as modular as possible. Create a new function that just recieves data, formats it as HTML, and returns it.
+
+Now that the logic is written to create a card, call this function from inside renderDataAsHtml(). This string is then concatenated onto the cards variable, appended to the viewNotes.html page.
