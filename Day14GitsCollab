@@ -1,0 +1,99 @@
+###Git and GitHub Collaboration
+
+##Objectives
+
+You will learn to:
+
+create a repository on GitHub.
+clone repositories locally.
+make changes to local and remote repositories through commits.
+learn to collaborate through branches and pull requests.
+
+##Instructions
+
+##Cloning a repository
+Learn what distributed version control is, and the difference between Git and GitHub.
+
+Go through the steps of creating a new remote repository in GitHub.
+
+Understand the notion of cloning repositories to create a local version. Cloning the repository will be done through the terminal. Use the command line to navigate to where the project will be in your filesystem, then type:
+
+git clone [repo url]
+
+Navigate to the newly added local Git repository.
+
+Use the command line to a new file in that folder called README.md. Add some text to the README file and save it.
+
+##Commit to a repository
+Back in the command line, type git status. Inspect the response.
+
+Since Git is a version control system, it needs to know what it should be keeping track of and what it shouldn’t be. We want to include this file in our project, so let’s add this file to be tracked in our project with git add README.md. Then type git status again.
+
+The file name should now be green, and listed under the header “Changes to be commited”. Now that the files are staged to be committed, we actually have to “commit” these changes to our repo.
+
+The command to make new commits is git commit -m "description", where description should be an actual description of what the changes are. In general, short and sweet commits are idea, no longer than 50 characters, explaining which files were changed and why.
+
+Commit the staged files using this command: git commit -m "add readme".
+
+Type git status again. It should show that there is nothing to commit.
+
+Go to your GitHub repo and refresh the page - the page will still be blank! GitHub doesn’t have any knowledge of the most recent commit because it hasn’t been pushed up to it.
+
+This can be fixed by pushing these commits to our remote repository - the one originally created on GitHub.
+
+Since the local repository was cloned from the remote one, the local repo is aware of the remote. Confirm this by typing git remote show origin.
+
+Since the remote is already set up, all that remains to be done is to push our changes to the remote Github repository. First we’ll add this line to rename our default branch from “master” to “main”. Change the name of the main branch with this line of code:
+
+git branch -M main
+
+We’ll want to sync our remote GitHub repository to our local directory with this line:
+
+git remote add origin <remote url>
+
+Finally we can push our local code to our remote repository with this command: git push origin main. Running this in our terminal will sync the local changes with the remote GitHub repository.
+
+You may be prompted to enter your username and password. When entering your password, it won’t show up in the terminal, but it’s working - just type it in and hit enter.
+
+After refreshing the GitHub repo page, the newly updated README.md should be visible. Now the remote repository is up to date with the local copy.
+
+##Collaborating through Git branches
+
+We’ll be using branches to add commits to the project without affecting anyone else who is also working on it. By default, git will place us in the main branch.
+
+The command to create a new branch (and switch to it) is git checkout -b [branch-name]. The -b will create a new branch. The checkout will switch from main to the newly created branch. The name of the branch has to be one word, but dashes and underscores are allowed.
+
+Checkout a new branch readme-about: run the command git checkout -b readme-about. From there make changes to the README.md file to demonstrate the use of branches.
+
+Go through the workflow to commit changes.
+
+Check the status (git status)
+Add the changed file (git add README.md)
+Check the status to make sure the file is correctly staged (git status)
+Make a commit (git commit -m "add about section to readme")
+The command we learned for pushing commits previously was git push origin main because we were on the local main branch, and we wanted to push it to the remote main branch. However, this time, we’re on a different branch: readme-about. To sync you local changes to the remote repo, you should run the command: git push origin readme-about.This will save changes to the remote repository’s readme-about branch.
+
+##Merging a branch and handling conflicts
+Go to GitHub and refresh - there should be a message about a recently pushed branch. You should click on the “Compare & pull request” button to initiate a pull request.
+
+Walk through the steps to complete a pull request.
+
+Occasionally, when collaborating two people will make changes to the same file on two different branches. This requires a special process to resolve conflicting changes. To learn how to resolve conflicts, we will first need to simulate a conflict.
+
+In the terminal, run the following commands: git checkout main (switch to the main branch) git checkout -b rewrite-about (create a new branch rewrite-about and switch to it).
+
+When a new branch is created, it begins as a clone of the previous branch. In this example, rewrite-about contains the same code as main on our local branch. This creates a “forced” conflict because the local main branch is different than the remote main branch.
+
+Update the README.md file with some new text, to create a conflict.
+
+Step through the workflow to add, commit, and push local changes to the remote repository.
+
+Navigate to GitHub to create a new pull request. GitHub can’t automatically merge the two because there are conflicts. They will have to be fixed manually via GitHub’s editor. Click on “Resolve conflicts” to continue.
+
+GitHub will show two labeled versions - one from the current branch, rewrite-about, and the other from main. Git needs more direction to determine how to proceed, so the file has to be manually edited. Go ahead and edit it to resolve the conflicts.
+
+Click on “Mark as resolved” and then “Commit merge”. This will create a new commit with the resolved changes. Once completed, merge the pull request as normal.
+
+We previously ran git checkout main to reset the state of the repo to one where README.md didn’t exist yet. This means that the main branch is out of date, and that the emote repo contains commits that main doesn’t have.
+
+It’s important to keep the main branch up to date, and this can be done with a simple command: git pull origin main. Students can think of this command as the inverse of git push origin main. It will pull all the repo information from the main branch of the remote repo. After running the command, the README.md should exist and contain the contents from our last merged pull request.
